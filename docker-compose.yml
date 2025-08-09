@@ -1,0 +1,14 @@
+services:
+  coqui:
+    container_name: coqui
+    build: .
+    ports:
+      - 5002:5002
+    devices:
+      - /dev/kfd
+      - /dev/dri
+    security_opt:
+      - seccomp=unconfined # Not required but recommended
+    volumes:
+      - ./models:/root/.local/share/tts
+      - ./reference:/reference
